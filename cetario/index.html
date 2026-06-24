@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">      
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Cetário | Explorando os Cetáceos</title>
+</head>
+<body>
+<header>    
+    <nav class="navbar">
+        <a href="#hero"><img 
+        class="logo"
+        src="assets/images/logo/whale-tail.png" 
+        alt="logo no topo esquerdo de uma cauda de baleia com design completamente preto e minimalista"
+        ></a>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="#species">Espécies</a></li>
+            <li class="nav-item"><a href="#about">Sobre</a></li>
+            <li class="nav-item"><a href="#contact">Contato</a></li>
+        </ul>
+        <button class="hamburguer" aria-label="Abrir menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+</header>
+
+<main>
+    <section id="hero">
+        <h1>CETÁRIO</h1>
+        <p>Explore o mundo dos principais cetáceos do mundo</p>
+        <button class="explore">Explore</button>
+    </section> 
+
+    <section id="species">
+        <button id="prev">&#10094;</button>
+        <div id="carousel">
+            <article data-species="azul">
+                <img src="assets/images/azul.png" alt="imagem de uma baleia azul sem fundo">
+                <h3>Azul</h3>
+                <small>Balaenoptera musculus</small>
+            </article>
+            <article data-species="jubarte">
+                <img src="assets/images/jubarte.png" alt="imagem de uma jubarte sem fundo">
+                <h3>Jubarte</h3>
+                <small>Megaptera novaengliae</small>
+            </article>
+            <article data-species="franca">
+                <img src="assets/images/franca.png" alt="imagem de uma baleia franca sem fundo">
+                <h3>Franca do Pacífico</h3>
+                <small>Eubalaena japonica</small>
+            </article>
+            <article data-species="garrafa">
+                <img src="assets/images/garrafa.png" alt="imagem de um golfinho nariz de garrafa sem fundo">
+                <h3>Nariz de Garrafa</h3>
+                <small>Tursiops truncatus</small>
+            </article>
+            <article data-species="orca">
+                <img src="assets/images/orca.png" alt="imagem de uma orca sem fundo">
+                <h3>Orca</h3>
+                <small>Orcinus orca</small>
+            </article>
+            <article data-species="cachalote">
+                <img src="assets/images/cachalote.png" alt="imagem de uma cachalote sem fundo">
+                <h3>Cachalote</h3>
+                <small>Physeter macrocephalus</small>
+            </article>
+            <article data-species="beluga">
+                <img src="assets/images/beluga.png" alt="imagem de uma beluga sem fundo">
+                <h3>Beluga</h3>
+                <small>Delphinapterus leucas</small>
+            </article>
+        </div>
+        <button id="next">&#10095;</button>
+    </section>
+
+    <section id="about">
+        <h2>Sobre o site</h2>
+        <p>Os cetáceos são animais incríveis e misteriosos e entender mais sobre criaturas tão diversas e versáteis em nosso mundo é um prazer imenso. Esse site foi criado por curiosidade e pesquisa, para desenvolver habilidades e conseguir criar um portfólio demonstrando para o mercado todas as minhas competências. As informações foram compiladas a partir de fontes públicas e têm caráter educacional.</p>
+    </section>
+</main>
+
+<footer id="contact">  
+    <img class="paulo" src="assets/images/profile.png" alt="foto de paulo moreira, homem negro de cabelos escuros">
+    <div>
+        <h4>Paulo Moreira</h4>
+        <p>Estudante de Análise e Desenvolvimento de Sistemas na UNIJORGE, com interesse em tecnologia e biologia.</p>
+        <address><a href="mailto:thepaulo1313@gmail.com">thepaulo1313@gmail.com</a></address>
+    </div>    
+    <div class="icons">
+        <ul>
+            <li><a href="https://github.com/paaulo-13?tab=repositories" target="_blank" aria-label="GitHub de Paulo Moreira"><i class="fa-brands fa-square-github"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/paulosergio13/" target="_blank" aria-label="Linkedin de Paulo Moreira"><i class="fa-brands fa-square-linkedin"></i></a></li>
+        </ul>
+    </div>
+</footer> 
+<div id="splash">
+    <div class="onda"></div>
+    <div class="onda"></div>
+    <div class="onda"></div>
+</div>
+
+<div id="modal">
+    <div id="modal-card">
+        <button id="modal-close">&times;</button>
+        <img id="modal-image" src="assets/images/azul.png" alt="Imagem de uma baleia azul sem fundo">
+        <h3>Baleia Azul</h3>
+        <dl>
+            <dt>Nome Científico</dt>       
+            <dd id="cientifico">Balaenoptera musculus</dd>
+            <dt>Grupo</dt>
+            <dd id="grupo">Baleia de barbatanas</dd>
+            <dt>Estado de conservação</dt>
+            <dd id="conservacao">Em perigo</dd>
+            <dt>Peso</dt>
+            <dd id="peso">72-140 Toneladas</dd>
+            <dt>Tamanho</dt>
+            <dd id="tamanho">25-33 Metros</dd>
+            <dt>Alimentação</dt>
+            <dd id="alimentacao">Pequenos Crustáceos e peixes</dd>
+            <dt>Distribuição</dt>
+            <dd id="distribuicao">Todos os oceanos</dd>
+            <dt>Curiosidade</dt>
+            <dd id="curiosidade">É o maior animal que já existiu no planeta, incluindo os dinossauros</dd>
+        </dl>
+    </div>
+</div>
+<script src="scripts/script.js"></script>
+</body>
+</html>

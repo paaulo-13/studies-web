@@ -1,0 +1,309 @@
+
+"Vamos começar a programar o projeto CETÁRIO. Quero que você atue como meu mentor e me guie passo a passo sem entregar tudo pronto. Comece pela estrutura inicial de pastas e HTML semântico."
+
+
+Projeto de Portfólio Front-End: CETÁRIO
+Objetivo
+
+Criar uma landing page moderna e interativa sobre cetáceos (baleias, golfinhos e orcas), unindo minhas duas áreas de interesse: tecnologia e biologia.
+
+O projeto tem caráter educacional e servirá como peça de portfólio para demonstrar habilidades em desenvolvimento front-end.
+
+O foco é proporcionar uma navegação simples, agradável e visualmente marcante.
+
+Tecnologias
+
+Primeira versão utilizando apenas:
+
+HTML5
+CSS3
+JavaScript Vanilla
+
+Sem React, Tailwind ou frameworks.
+
+Objetivo: fortalecer fundamentos de front-end.
+
+Identidade Visual
+Estilo
+
+Inspirado em:
+
+Apple
+Stripe
+Vercel
+
+Características:
+
+Minimalista
+Moderna
+Muito espaço em branco
+Animações suaves
+Experiência fluida
+Tema
+
+Oceano profundo.
+
+Fundo azul-marinho escuro.
+
+As baleias possuem fundo removido para parecerem flutuando sobre a página.
+
+Fundo principal
+#10263F
+Azul2
+#A8D8F0
+Azul3
+#2B4F70
+Branco
+#FFFFFF
+Preto nos textos em fundo claro
+#231F20
+
+Tipografia
+
+Fonte principal:
+
+Montserrat
+
+Auxiliar: Roboto
+
+Estrutura da Página
+Navbar
+
+Contém:
+
+Logo Baleia
+
+Espécies
+Sobre
+Contato
+
+Navbar fixa no topo.
+
+Links fazem scroll suave para as seções.
+
+Hero Section
+
+Título:
+
+CETÁRIO
+
+Subtítulo:
+
+Explore o mundo dos principais cetáceos do mundo
+
+Botão:
+
+Explorar
+Animação do Botão Explorar
+
+Ao clicar:
+
+Pequeno splash de água na tela
+Scroll suave até o carrossel
+
+Animação simples e elegante.
+
+Carrossel de Espécies
+
+Espécies:
+
+Baleia Azul
+Jubarte
+Cachalote
+Orca
+Baleia-Franca
+Golfinho-Nariz-de-Garrafa
+Estado Normal
+
+Mostra:
+
+<  imagem central  >
+
+com espécies laterais parcialmente visíveis.
+
+Hover
+
+Ao passar o mouse:
+
+A espécie:
+
+cresce levemente
+ganha destaque
+
+As demais:
+
+ficam mais opacas
+ficam levemente desfocadas
+
+Aparece abaixo:
+
+Nome da espécie
+Status de conservação
+
+Exemplo:
+
+Jubarte
+🟢 Pouco preocupante
+Clique
+
+Ao clicar em uma espécie:
+
+Atualiza um painel informativo.
+
+Painel Informativo
+
+Mostra:
+
+Nome
+Nome científico
+Status de conservação
+Comprimento
+Peso
+Alimentação
+Distribuição
+Curiosidade
+
+Visual minimalista.
+
+Imagem da espécie pode ultrapassar parcialmente o card para criar profundidade.
+
+Objetivo Técnico do Projeto
+
+Demonstrar conhecimentos em:
+
+HTML semântico
+CSS moderno
+Flexbox
+Grid
+Responsividade
+JavaScript
+Manipulação do DOM
+Eventos
+Animações
+Organização de projeto
+Deploy
+Ordem de Desenvolvimento
+Estrutura HTML
+Layout CSS
+Responsividade
+Carrossel
+Hover das espécies
+Painel dinâmico
+Scroll suave
+Splash de água
+Deploy
+
+    <p>Nome comum</p>
+    <h3></h3>
+    <p>Nome Científico</p>
+    <small></small>
+	    <dl>
+        <dt>Grupo</dt>
+        <dd></dd>
+
+        <dt>Estado de conservação</dt>
+        <dd></dd>
+
+        <dt>Peso</dt>
+        <dd></dd>
+
+        <dt>Tamanho</dt>
+        <dd></dd>
+
+        <dt>Alimentação</dt>
+        <dd></dd>
+
+	<dt>Dispersão</dt>
+        <dd></dd>
+    	</dl>
+
+    <p>Nome comum</p>
+    <h3>Nariz de Garrafa</h3>
+    <p>Nome Científico</p>
+    <small>Tursiops truncatus</small>
+	    <dl>
+        <dt>Grupo</dt>
+        <dl>Golfinho</dl>
+        
+        <dt>Estado de conservação</dt>
+        <dd>Pouco preocupante</dd>
+
+        <dt>Peso</dt>
+        <dd>150-650 Quilos</dd>
+
+        <dt>Tamanho</dt>
+        <dd>1,9 - 4 metros</dd>
+
+        <dt>Alimentação</dt>
+        <dd>Peixes, Moluscos e Crustáceos</dd>
+
+	    <dt>Dispersão</dt>
+        <dd>Todos os oceanos</dd>
+    	</dl>
+
+    <p>Nome comum</p>
+    <h3>Cachalote</h3>
+    <p>Nome Científico</p>
+    <small>Physeter macrocephalus</small>
+	    <dl>
+        <dt>Grupo</dt>
+        <dd>Baleia Dentada</dd>
+
+        <dt>Estado de conservação</dt>
+        <dd>Vulnerável</dd>
+
+        <dt>Peso</dt>
+        <dd>14-41 Toneladas</dd>
+
+        <dt>Tamanho</dt>
+        <dd>11-16 Metros</dd>
+
+        <dt>Alimentação</dt>
+        <dd>Moluscos e peixes</dd>
+
+	    <dt>Dispersão</dt>
+        <dd>Todos os oceanos</dd>
+    	</dl>
+
+    <p>Nome comum</p>
+    <h3>Beluga</h3>
+    <p>Nome Científico</p>
+    <small>Delphinapterus leucas</small>
+	    <dl>
+        <dt>Grupo</dt>
+        <dd>Golfinho</dd>
+
+        <dt>Estado de conservação</dt>
+        <dd>Pouco preocupante</dd>
+
+        <dt>Peso</dt>
+        <dd>1-1,6 Toneladas</dd>
+
+        <dt>Tamanho</dt>
+        <dd>3-5,5 Metros</dd>
+
+        <dt>Alimentação</dt>
+        <dd>Peixes, crustaceos e moluscos</dd>
+
+	    <dt>Dispersão</dt>
+        <dd>Oceano Ártico</dd>
+    	</dl>
+</div>
+
+Franca do Pacífico
+
+Grupo: Baleia de barbatanas
+Estado de conservação: Em perigo
+Peso: até 90 Toneladas
+Tamanho: 14-18 Metros
+Alimentação: Zooplâncton e pequenos crustáceos
+Dispersão: Oceano Pacífico Norte
+
+Orca
+
+Grupo: Golfinho
+Estado de conservação: Dados insuficientes
+Peso: 4-10 Toneladas
+Tamanho: 7-10 Metros
+Alimentação: Peixes, focas, aves marinhas e outros cetáceos
+Dispersão: Todos os oceanos

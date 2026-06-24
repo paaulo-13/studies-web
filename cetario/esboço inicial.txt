@@ -1,0 +1,36 @@
+┌───────────────────────┐
+│ 🐋 │Espécies Sobre Contato│
+│ 
+└───────────────────────┘
+
+       CETÁRIO
+
+Explore o mundo dos principais cetáceos do mundo
+
+[Explorar] --> Ao clicar aparece efeito de splash de agua remetendo ao esguicho e ao pulo desses animais. Também acontece pequeno scroll para o slide de slides das espécies
+
+━━━━━━━━━━━━━━━━━━━━━━━
+Slide de imagens com as espécies listadas abaixo: so aparecem as fotos sem informações ate então. Ao passar o mouse em cima do png da espécie aparece nome, estado de conservação. Ao clicar o png vai pro lado esquerdo < e aparece um painel modal na direita > com Nome, nome cientifico, estado de conservação, tamanho, peso.
+
+[ Baleia Azul ]
+[ Jubarte     ]
+[ Cachalote   ]
+[ Franca      ]
+[ Golfinho    ]
+[ Orca	      ]
+etc.
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+Sobre o projeto: esse site foi realizado por curiosidade e pesquisa para desenvolver um portfolio bla bla bla. As informações foram compiladas a partir de fontes públicas e têm caráter educacional."
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+Contato: email, LinkedIn e github
+
+━━━━━━━━━━━━━━━━━━━━━━━
+
+Sobre mim:
+Desenvolvido por Paulo Moreira.
+
+Estudante de Análise e Desenvolvimento de Sistemas, com interesse em desenvolvimento front-end, tecnologia e biologia.
