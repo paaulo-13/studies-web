@@ -32,6 +32,9 @@
 #cientifico{
     font-style: italic;
 }
+#carrousel small{
+    font-style: italic;
+}
 
 body {
     min-height: 100vh;
