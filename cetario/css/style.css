@@ -29,7 +29,9 @@
     background-color: var(--dark);
     border-radius: 3px;
 }
-
+#cientifico{
+    font-style: italic;
+}
 
 body {
     min-height: 100vh;
