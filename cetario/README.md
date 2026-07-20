@@ -76,5 +76,8 @@ $ cd studies-web/cetario
 ```
 Abra o arquivo `index.html` em seu navegador de preferência ou utilize a extensão **Live Server** (no VS Code) para visualização com recarregamento automático.
 
+Caso deseje acessar online a pagina está disponível em: https://paaulo-13.github.io/studies-web/cetario/
+
+
 ---
 <p align="center">Desenvolvido por <strong>Paulo Sérgio Moreira dos Santos</strong></p>
