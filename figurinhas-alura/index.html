@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alura Album - Botânica</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <!-- Style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Sound Control -->
+    <button id="sound-toggle" class="sound-btn" aria-label="Alternar som">
+        <svg class="sound-icon-on" viewBox="0 0 24 24" width="24" height="24">
+            <path fill="currentColor"
+                d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18,19.86 21,16.28 21,12C21,7.72 18,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+        </svg>
+        <svg class="sound-icon-off hidden" viewBox="0 0 24 24" width="24" height="24">
+            <path fill="currentColor"
+                d="M12,4L9.91,6.09L12,8.18M4.27,3L3,4.27L7.73,9H3V15H7L12,20V13.27L16.25,17.5C15.58,18 14.83,18.4 14,18.71V20.77C15.38,20.44 16.63,19.78 17.7,18.9L20.73,21.93L22,20.66L4.27,3M14,3.23V5.29C14.73,5.5 15.43,5.83 16.07,6.26L14.59,7.74C14.41,7.65 14.21,7.58 14,7.54V9.54L19,14.54C19,13.7 19,12.85 19,12C19,7.72 16,4.14 14,3.23M16.5,12C16.5,11.2 16.1,10.5 15.5,10.05L14,11.55V12.45L15.46,13.9C15.48,13.28 16.5,12.62 16.5,12Z" />
+        </svg>
+    </button>
+
+    <!-- Navigation Arrows -->
+    <button id="btn-prev" class="nav-btn nav-btn-left" aria-label="Página Anterior">
+        <svg viewBox="0 0 24 24" width="36" height="36">
+            <path fill="currentColor" d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
+        </svg>
+    </button>
+    <button id="btn-next" class="nav-btn nav-btn-right" aria-label="Próxima Página">
+        <svg viewBox="0 0 24 24" width="36" height="36">
+            <path fill="currentColor" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+        </svg>
+    </button>
+
+    <!-- Album Container -->
+    <div class="album-viewport" id="album-viewport">
+        <div class="flip-book" id="book">
+
+            <!-- PAGINA 0: CAPA -->
+            <div class="page page-cover" data-density="hard">
+                <div class="page-content cover-content">
+                    <div class="cover-header">
+                        <span class="cover-seal">COLEÇÃO OFICIAL</span>
+                    </div>
+                    <div class="cover-body">
+                        <h1 class="cover-title glitch" data-text="BOTÂNICA">BOTÂNICA</h1>
+                        <h2 class="cover-subtitle glitch" data-text="ALBUM">ALBUM</h2>
+                        <div class="cover-art">
+                            <div class="art-grid"></div>
+
+                            <!-- Floating Mini Cards Silhouette Collage -->
+                            <div class="mini-card mc-folhagens">
+                                <div class="mc-avatar">FO</div>
+                                <span class="mc-num">#01</span>
+                            </div>
+                            <div class="mini-card mc-floriferas">
+                                <div class="mc-avatar">FL</div>
+                                <span class="mc-num">#06</span>
+                            </div>
+                            <div class="mini-card mc-arvores">
+                                <div class="mc-avatar">AR</div>
+                                <span class="mc-num">#20</span>
+                            </div>
+
+                            <!-- Central Glowing 3D Tech Sphere -->
+                            <div class="tech-sphere">
+                                <div class="sphere-core">
+                                    <svg class="art-logo" viewBox="0 0 24 24" fill="currentColor">
+                                        <!-- Folha botânica com broto interno (ícone eco) -->
+                                        <path d="M6.05,8.05A7.001,7.001 0 0,0 6.05,19.95C8.07,22 11,22.93 13.06,22.27L13.07,22.26C15.06,21.57 16.69,19.92 17.73,17.94C19.6,14.44 20,10.05 20,8C20,8 14,8 6.05,8.05M14,14A2,2 0 0,1 12,16A2,2 0 0,1 10,14V11L12,9L14,11V14Z"/>
+                                    </svg>
+                                </div>
+                                <div class="sphere-ring ring-1"></div>
+                                <div class="sphere-ring ring-2"></div>
+                            </div>
+                        </div>
+                        <p class="cover-footer-text">A NATUREZA COMO A GENTE GOSTA</p>
+                    </div>
+                    <div class="cover-footer">
+                        <span>2026 IMERSÃO JULHO</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGINA 1: FOLHAGENS -->
+            <div class="page page-left">
+                <div class="page-content">
+                    <div class="page-header">
+                        <span class="tech-badge badge-folhagens">🌿 Folhagens</span>
+                        <h3 class="page-title">Belezas Verdes e Decorativas</h3>
+                    </div>
+                    <div class="stickers-grid">
+                        <div class="sticker-slot">
+                            <div class="slot-number">#01</div>
+                            <div class="slot-name">Costela-de-adão</div>
+                            <div class="slot-role">Monstera deliciosa</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#02</div>
+                            <div class="slot-name">Jiboia</div>
+                            <div class="slot-role">Epipremnum aureum</div>
+                        </div>
+                        <div class="sticker-slot special-slot">
+                            <div class="slot-number">#03</div>
+                            <div class="slot-name">Zamioculca</div>
+                            <div class="slot-role">Zamioculcas zamiifolia</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#04</div>
+                            <div class="slot-name">Espada-de-São-Jorge</div>
+                            <div class="slot-role">Dracaena trifasciata</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#05</div>
+                            <div class="slot-name">Comigo-ninguém-pode</div>
+                            <div class="slot-role">Dieffenbachia seguine</div>
+                        </div>
+                    </div>
+                    <div class="page-footer">Pág. 1</div>
+                </div>
+            </div>
+
+            <!-- PAGINA 2: FLORIFERAS -->
+            <div class="page page-right">
+                <div class="page-content">
+                    <div class="page-header">
+                        <span class="tech-badge badge-floriferas">🌸 Floríferas</span>
+                        <h3 class="page-title">Cores e Perfumes da Natureza</h3>
+                    </div>
+                    <div class="stickers-grid">
+                        <div class="sticker-slot">
+                            <div class="slot-number">#06</div>
+                            <div class="slot-name">Antúrio</div>
+                            <div class="slot-role">Anthurium andraeanum</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#07</div>
+                            <div class="slot-name">Orquídea Phalaenopsis</div>
+                            <div class="slot-role">Phalaenopsis spp.</div>
+                        </div>
+                        <div class="sticker-slot special-slot">
+                            <div class="slot-number">#08</div>
+                            <div class="slot-name">Kalanchoe</div>
+                            <div class="slot-role">Kalanchoe blossfeldiana</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#09</div>
+                            <div class="slot-name">Rosa</div>
+                            <div class="slot-role">Rosa spp.</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#10</div>
+                            <div class="slot-name">Hibisco</div>
+                            <div class="slot-role">Hibiscus rosa-sinensis</div>
+                        </div>
+                    </div>
+                    <div class="page-footer">Pág. 2</div>
+                </div>
+            </div>
+
+            <!-- PAGINA 3: FRUTIFERAS -->
+            <div class="page page-left">
+                <div class="page-content">
+                    <div class="page-header">
+                        <span class="tech-badge badge-frutiferas">🍎 Frutíferas</span>
+                        <h3 class="page-title">Sabores da Nossa Terra</h3>
+                    </div>
+                    <div class="stickers-grid">
+                        <div class="sticker-slot">
+                            <div class="slot-number">#11</div>
+                            <div class="slot-name">Limoeiro</div>
+                            <div class="slot-role">Citrus limon</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#12</div>
+                            <div class="slot-name">Mangueira</div>
+                            <div class="slot-role">Mangifera indica</div>
+                        </div>
+                        <div class="sticker-slot special-slot">
+                            <div class="slot-number">#13</div>
+                            <div class="slot-name">Goiabeira</div>
+                            <div class="slot-role">Psidium guajava</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#14</div>
+                            <div class="slot-name">Jabuticabeira</div>
+                            <div class="slot-role">Plinia cauliflora</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#15</div>
+                            <div class="slot-name">Aceroleira</div>
+                            <div class="slot-role">Malpighia emarginata</div>
+                        </div>
+                    </div>
+                    <div class="page-footer">Pág. 3</div>
+                </div>
+            </div>
+
+            <!-- PAGINA 4: ARVORES -->
+            <div class="page page-right">
+                <div class="page-content">
+                    <div class="page-header">
+                        <span class="tech-badge badge-arvores">🌳 Árvores</span>
+                        <h3 class="page-title">Gigantes da Natureza</h3>
+                    </div>
+                    <div class="stickers-grid">
+                        <div class="sticker-slot">
+                            <div class="slot-number">#16</div>
+                            <div class="slot-name">Ipê-amarelo</div>
+                            <div class="slot-role">Handroanthus albus</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#17</div>
+                            <div class="slot-name">Oitizeiro</div>
+                            <div class="slot-role">Licania tomentosa</div>
+                        </div>
+                        <div class="sticker-slot special-slot">
+                            <div class="slot-number">#18</div>
+                            <div class="slot-name">Flamboyant</div>
+                            <div class="slot-role">Delonix regia</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#19</div>
+                            <div class="slot-name">Sibipiruna</div>
+                            <div class="slot-role">Poincianella pluviosa</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#20</div>
+                            <div class="slot-name">Pau-brasil</div>
+                            <div class="slot-role">Paubrasilia echinata</div>
+                        </div>
+                    </div>
+                    <div class="page-footer">Pág. 4</div>
+                </div>
+            </div>
+
+            <!-- PAGINA 5: SUCULENTAS E CACTOS -->
+            <div class="page page-left">
+                <div class="page-content">
+                    <div class="page-header">
+                        <span class="tech-badge badge-suculentas">🌵 Suculentas e Cactos</span>
+                        <h3 class="page-title">Resistência e Simplicidade</h3>
+                    </div>
+                    <div class="stickers-grid">
+                        <div class="sticker-slot">
+                            <div class="slot-number">#21</div>
+                            <div class="slot-name">Rosa-de-pedra</div>
+                            <div class="slot-role">Echeveria elegans</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#22</div>
+                            <div class="slot-name">Babosa</div>
+                            <div class="slot-role">Aloe vera</div>
+                        </div>
+                        <div class="sticker-slot special-slot">
+                            <div class="slot-number">#23</div>
+                            <div class="slot-name">Jade</div>
+                            <div class="slot-role">Crassula ovata</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#24</div>
+                            <div class="slot-name">Cacto Mandacaru</div>
+                            <div class="slot-role">Cereus jamacaru</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#25</div>
+                            <div class="slot-name">Cacto Orelha-de-Coelho</div>
+                            <div class="slot-role">Opuntia microdasys</div>
+                        </div>
+                    </div>
+                    <div class="page-footer">Pág. 5</div>
+                </div>
+            </div>
+
+            <!-- PAGINA 6: NATIVAS -->
+            <div class="page page-right">
+                <div class="page-content">
+                    <div class="page-header">
+                        <span class="tech-badge badge-nativas">🌎 Nativas do Brasil</span>
+                        <h3 class="page-title">A Riqueza da Nossa Flora</h3>
+                    </div>
+                    <div class="stickers-grid">
+                        <div class="sticker-slot">
+                            <div class="slot-number">#26</div>
+                            <div class="slot-name">Pau-brasil</div>
+                            <div class="slot-role">Paubrasilia echinata</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#27</div>
+                            <div class="slot-name">Vitória-régia</div>
+                            <div class="slot-role">Victoria amazonica</div>
+                        </div>
+                        <div class="sticker-slot special-slot">
+                            <div class="slot-number">#28</div>
+                            <div class="slot-name">Ipê-roxo</div>
+                            <div class="slot-role">Handroanthus impetiginosus</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#29</div>
+                            <div class="slot-name">Araucária</div>
+                            <div class="slot-role">Araucaria angustifolia</div>
+                        </div>
+                        <div class="sticker-slot">
+                            <div class="slot-number">#30</div>
+                            <div class="slot-name">Embaúba</div>
+                            <div class="slot-role">Cecropia pachystachya</div>
+                        </div>
+                    </div>
+                    <div class="page-footer">Pág. 6</div>
+                </div>
+            </div>
+
+            <!-- PAGINA 7: CONTRACAPA -->
+            <div class="page page-cover-back" data-density="hard">
+                <div class="page-content cover-back-content">
+                    <div class="cover-back-header">
+                        <h2>BOTÂNICA ALBUM</h2>
+                    </div>
+                    <div class="cover-back-body">
+                        <div class="tech-logo-collage">
+                            <span>🌿 FOLHAGENS</span> • <span>🌸 FLORÍFERAS</span> • <span>🍎 FRUTÍFERAS</span> •
+                            <span>🌳 ÁRVORES</span> • <span>🌵 SUCULENTAS</span> • <span>🌎 NATIVAS</span>
+                        </div>
+                        <p class="summary-text">
+                            O Botânica Album é um guia interativo e visual que celebra a fantástica diversidade das
+                            plantas.
+                            Descubra as espécies que enfeitam nossas casas e as gigantes nativas que moldam os nossos
+                            ecossistemas.
+                        </p>
+                        <div class="barcode-container">
+                            <div class="barcode">
+                                <!-- Simulated barcode lines -->
+                                <div class="bar"></div>
+                                <div class="bar thin"></div>
+                                <div class="bar"></div>
+                                <div class="bar thick"></div>
+                                <div class="bar thin"></div>
+                                <div class="bar"></div>
+                                <div class="bar thick"></div>
+                                <div class="bar"></div>
+                                <div class="bar thin"></div>
+                                <div class="bar thick"></div>
+                            </div>
+                            <span class="barcode-number">9 788575 228494</span>
+                        </div>
+                    </div>
+                    <div class="cover-back-footer">
+                        <span>Imersão Julho • Alura • 2026</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Page Flip Library -->
+    <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js"></script>
+    <!-- Logic -->
+    <script src="app.js"></script>
+</body>
+
+</html>
