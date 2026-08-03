@@ -1,83 +1,162 @@
-# 🐋 CETÁRIO - Scientific Web Application
+# 🐋 Cetário — Explorando os Cetáceos
 
-<p align="center">
-  <a href="#-conceito-e-propósito">Conceito</a> •
-  <a href="#-design-e-uiux">Design</a> •
-  <a href="#-funcionalidades-e-animações">Funcionalidades</a> •
-  <a href="#-decisões-técnicas">Decisões Técnicas</a> •
-  <a href="#-stack-tecnológica">Stack</a> •
-  <a href="#-como-executar">Como Executar</a>
-</p>
+> Site educativo e interativo sobre as principais espécies de cetáceos do mundo, com carrossel animado, modal de detalhes e design oceânico imersivo.
 
-## 💡 Conceito e Propósito
-
-**CETÁRIO** é um site educativo e científico dedicado à divulgação de espécies de cetáceos (baleias, golfinhos e orcas). O nome faz referência à palavra "cetáceo" combinada com um sufixo que remete a herbários ou bestiários — atuando como um catálogo vivo da fauna marinha.
-
-Este projeto foi concebido como peça principal de portfólio para demonstrar sólidas competências de Front-End. O objetivo central foi **não utilizar nenhum framework** (como React, Vue ou Bootstrap), provando domínio absoluto da base (HTML, CSS e JavaScript puros), o que é um diferencial técnico importante.
-
-🔗 **[Acesse o projeto online aqui](https://paaulo-13.github.io/studies-web/cetario/)**
+![HTML5](https://img.shields.io/badge/HTML5-semântico-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-animações-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-Vanilla-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Responsivo](https://img.shields.io/badge/Design-Responsivo-4CAF50?style=for-the-badge&logo=responsive-design&logoColor=white)
 
 ---
 
-## 🎨 Design e UI/UX
+## 📋 Sobre o Projeto
 
-A estética do projeto foi definida como minimalista e de alto contraste, inspirada no uso generoso de espaços em branco (estilo Apple) e em dark modes sofisticados com grids austeros (estilo Vercel). Todo o fluxo e os wireframes foram criados no **Figma** antes da implementação em código.
+O **Cetário** é um site de página única (one-page) com tema oceânico dedicado a apresentar e divulgar informações sobre cetáceos — a família que inclui baleias, golfinhos e botos. O projeto foi desenvolvido integralmente com **HTML, CSS e JavaScript puro** (sem frameworks), e foi criado como peça central do meu portfólio de frontend.
 
-- **Paleta de Cores (Deep Ocean):** Utilização de tons escuros de azul-marinho e preto como base, com acentos claros. A intenção foi evocar a profundidade do oceano e a modernidade de forma elegante, evitando clichês visuais kitsch (como texturas de ondas marcadamente óbvias ou gradientes turquesa excessivos).
-- **O Ícone da Navbar:** O design do ícone na barra de navegação "vaza" propositalmente do seu limite, criando um efeito visual que remete à cauda de uma baleia rompendo a superfície da água e aparecendo no céu.
-- **Tipografia:** Uso da *Google Fonts*, combinando **Montserrat** e **Roboto Condensed** para criar um pareamento com forte contraste de peso entre os títulos e o corpo do texto.
-- **Estrutura (One-Page):** O layout final foca no minimalismo (Hero → Carrossel de Espécies → Sobre → Footer). Textos pesados foram substituídos por blocos centralizados, garantindo respiro visual.
+A proposta foi unir curiosidade pessoal por biologia marinha com a prática de conceitos essenciais do frontend: manipulação do DOM, eventos, carrossel customizado, modais dinâmicos e CSS animado.
 
 ---
 
-## ⚙️ Funcionalidades e Animações
+## ✨ Funcionalidades
 
-- **Hero & Botão CTA Animado:** A seção inicial possui um botão principal com uma animação interativa complexa em JavaScript Vanilla. Ao ser clicado, o botão gera um efeito de *splash/ripple* (uma onda que emana exatamente a partir da coordenada de toque do mouse).
-- **Carrossel de Espécies em Profundidade:** Um carrossel interativo desenhado com um efeito visual de profundidade. Os cards laterais aparecem com escala e opacidade reduzidas, simulando distância. A navegação pelos botões (Anterior/Próximo) atualiza os dados que são populados dinamicamente via JS.
-- **Sistema de Modal Dinâmico:** Em vez de construir múltiplos modais escondidos, foi criado um **único modal reutilizável**. O JavaScript captura o clique, busca os dados daquele animal específico em um objeto e popula a tela com as informações corretas de forma dinâmica.
+### 🌊 Animação de Splash na Entrada
+- Ao carregar a página, uma animação de ondas (`#splash`) é exibida, criando uma experiência de "mergulho" imersiva antes do conteúdo aparecer
+- O botão **"Explore"** da seção hero dispara uma animação de partículas de água geradas dinamicamente via JavaScript: bolhas de tamanhos e posições aleatórias surgem e desaparecem com animação CSS
+
+### 🎠 Carrossel de Espécies
+- Apresenta **7 espécies** de cetáceos em um carrossel horizontal deslizante
+- Navegação pelos botões `‹` e `›` (anterior e próximo), com lógica de limites para não ultrapassar o início ou fim
+- O item central recebe a classe `.destaque`, com efeito visual de escala e destaque em relação aos demais
+- O carrossel é **responsivo**: em dispositivos móveis (`<= 768px`) utiliza `100vw` por item, e em desktop usa `40vw`, com offset calculado dinamicamente via `calcularOffset()`
+- Ao redimensionar a janela, a posição é recalculada automaticamente com o evento `resize`
+
+### 🔍 Modal de Detalhes por Espécie
+- Ao clicar em qualquer card do carrossel, um **modal** é aberto com informações científicas detalhadas da espécie selecionada
+- O modal exibe: **nome popular, nome científico, grupo taxonômico, estado de conservação, peso, tamanho, alimentação, distribuição geográfica e curiosidade**
+- A imagem do animal é posicionada com um `transform` específico para cada espécie, criando composições visuais únicas dentro do modal
+- O modal é fechado pelo botão `×` no canto superior
+
+### 📱 Menu Hambúrguer
+- A navbar possui um botão hambúrguer que exibe/oculta o menu de navegação via `classList.toggle('aberto')`
+- O menu contém links para as seções: Espécies, Sobre e Contato
+
+### 🎨 Design Oceânico Imersivo
+- Paleta de cores inspirada no oceano com variáveis CSS (`--ocean-light`, etc.)
+- Tipografia com **Montserrat**, **Roboto** e **Roboto Condensed** (Google Fonts)
+- Ícones sociais integrados via **Font Awesome 7**
+- Animações CSS suaves em todo o carrossel e nos elementos interativos
+
+### 🐬 Espécies Catalogadas
+
+| # | Nome Popular | Nome Científico | Grupo |
+|---|---|---|---|
+| 1 | Baleia Azul | *Balaenoptera musculus* | Baleia de barbatanas |
+| 2 | Jubarte | *Megaptera novaeangliae* | Baleia de barbatanas |
+| 3 | Franca do Pacífico Norte | *Eubalaena japonica* | Baleia de barbatanas |
+| 4 | Nariz de Garrafa | *Tursiops truncatus* | Golfinho |
+| 5 | Orca | *Orcinus orca* | Golfinho oceânico |
+| 6 | Cachalote | *Physeter macrocephalus* | Baleia dentada |
+| 7 | Beluga | *Delphinapterus leucas* | Baleia dentada |
 
 ---
 
-## 🧠 Decisões Técnicas Relevantes
+## 🧱 Estrutura do Projeto
 
-Para manter um código limpo, escalável e seguir boas práticas de engenharia de software no Front-End, diversas decisões arquiteturais foram tomadas:
+```
+cetario/
+├── index.html          # Estrutura semântica completa da página
+├── css/
+│   └── style.css       # Todos os estilos, variáveis, animações e responsividade
+├── scripts/
+│   └── script.js       # Toda a lógica de interação: carrossel, modal, splash, hambúrguer
+└── assets/
+    └── images/         # Imagens das espécies e assets visuais
+```
 
-- **Apresentação no CSS, não nos Dados:** Quando surgiu a necessidade de deixar os nomes científicos em itálico, a decisão foi manter o HTML *fora* das strings de dados no JavaScript. O itálico foi aplicado puramente via CSS (`#cientifico { font-style: italic; }`), garantindo a separação correta entre Dado, Lógica e Apresentação.
-- **Atributos `data-*` para Keying:** O controle de qual espécie deve abrir no modal é feito utilizando o atributo `data-species`. Isso é semanticamente a forma correta de armazenar um dado arbitrário vinculado a um elemento HTML, descartando o uso indevido de IDs para esse fim.
-- **Notação de Colchetes no JS:** A lógica de população do modal exige acesso dinâmico às propriedades do objeto JS. Como a chave vem de uma variável em tempo de execução, foi utilizada a notação de colchetes (`objeto[chave]`) em vez de notação de ponto.
-- **`textContent` vs `innerHTML`:** Optar pelo uso de `textContent` para popular os textos do modal reforçou a decisão de segurança e arquitetura de não embutir tags HTML perdidas dentro de propriedades de objetos.
+### Estrutura Semântica da Página
+
+```
+<header>  → Navbar com logo e menu hambúrguer
+<main>
+  <section #hero>     → Título principal e botão de entrada animado
+  <section #species>  → Carrossel de cetáceos com botões de navegação
+  <section #about>    → Texto sobre o projeto
+<footer #contact>     → Informações do autor com links sociais
+<div #splash>         → Overlay de animação de ondas de entrada
+<div #modal>          → Modal de detalhes da espécie clicada
+```
 
 ---
 
-## 🛠 Stack Tecnológica
+## ⚙️ Lógica JavaScript — Principais Mecanismos
 
-| Camada | Escolha | Motivo / Observação |
-|---|---|---|
-| **Marcação** | HTML5 Semântico | Garantir boas práticas, acessibilidade base e marcação clara. |
-| **Estilização** | CSS3 Puro | Demonstrar domínio total da base visual, sem dependências. |
-| **Comportamento** | JavaScript Vanilla | Controle absoluto do DOM, eventos dinâmicos e animações. |
-| **Ícones** | Font Awesome (CDN) | Praticidade sem adicionar peso de bibliotecas completas no projeto. |
-| **Tipografia** | Google Fonts | Combinação de Montserrat e Roboto Condensed. |
-| **Prototipagem**| Figma | Wireframes e protótipo visual testados antes da codificação. |
-| **Hospedagem** | GitHub Pages | Gratuito, rápido e integrado nativamente ao repositório. |
+### Carrossel Adaptativo
+```js
+function calcularOffset(indice) {
+    if (isMobile()) {
+        return -indice * 100; // 100vw por item no mobile
+    } else {
+        return 30 - indice * 40; // 40vw por item no desktop
+    }
+}
+```
+
+### Gerador de Partículas de Água
+```js
+// Cria 8 bolhas com tamanho e posição aleatórios
+for (let i = 0; i < 8; i++) {
+    let gota = document.createElement('div');
+    let tamanho = Math.random() * 22 + 8;
+    // ... animação CSS com remoção automática após 1.2s
+}
+```
+
+### Objeto de Dados — Espécies
+Cada espécie é armazenada como um objeto JavaScript com todos os seus atributos e um valor de `transform` customizado para posicionamento da imagem no modal:
+```js
+let especies = {
+    azul: { nome, cientifico, grupo, conservacao, peso, tamanho, alimentacao, distribuicao, curiosidade, transform },
+    jubarte: { ... },
+    // ...
+}
+```
 
 ---
 
-## 🚀 Como Executar o Projeto Localmente
+## 🛠️ Tecnologias Utilizadas
 
-Siga os passos abaixo para testar o projeto na sua máquina:
+| Tecnologia | Uso |
+|---|---|
+| **HTML5 Semântico** | Estrutura acessível com `<header>`, `<main>`, `<section>`, `<article>`, `<footer>`, `<dl>` |
+| **CSS3** | Layout responsivo, variáveis CSS, keyframes, transições e pseudo-elementos |
+| **JavaScript ES6** | Manipulação do DOM, eventos, geração dinâmica de elementos, lógica do carrossel e modal |
+| **Google Fonts** | Montserrat, Roboto e Roboto Condensed |
+| **Font Awesome 7** | Ícones de redes sociais (GitHub e LinkedIn) |
+
+---
+
+## 🚀 Como Executar
+
+Este projeto não requer nenhuma instalação ou build. Basta abrir o arquivo diretamente no navegador:
 
 ```bash
-# Clone este repositório
-$ git clone https://github.com/paaulo-13/studies-web.git
+# Clone o repositório
+git clone https://github.com/paaulo-13/cetario.git
 
-# Acesse a pasta do projeto no terminal
-$ cd studies-web/cetario
+# Abra no navegador
+# Opção 1: Clique duplo em index.html
+# Opção 2: Use a extensão Live Server no VS Code
 ```
-Abra o arquivo `index.html` em seu navegador de preferência ou utilize a extensão **Live Server** (no VS Code) para visualização com recarregamento automático.
-
-Caso deseje acessar online a pagina está disponível em: https://paaulo-13.github.io/studies-web/cetario/
-
 
 ---
-<p align="center">Desenvolvido por <strong>Paulo Sérgio Moreira dos Santos</strong></p>
+
+## 👤 Autor
+
+**Paulo Moreira**
+Estudante de Análise e Desenvolvimento de Sistemas — UNIJORGE
+
+> *"Os cetáceos são animais incríveis e misteriosos e entender mais sobre criaturas tão diversas e versáteis em nosso mundo é um prazer imenso."*
+
+[![GitHub](https://img.shields.io/badge/GitHub-paaulo--13-181717?style=flat-square&logo=github)](https://github.com/paaulo-13?tab=repositories)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-paulosergio13-0A66C2?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/paulosergio13/)
+[![Email](https://img.shields.io/badge/Email-thepaulo1313@gmail.com-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:thepaulo1313@gmail.com)
