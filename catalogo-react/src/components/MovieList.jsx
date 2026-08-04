@@ -14,7 +14,7 @@ function MovieList({ busca }) {
 
     useEffect(() => {
         if (busca.trim() !=='') {
-            fetch(`https://api.themoviedb.org/3/search/movie?api_key=b1bf722e448db2af2236039be0782e6a&query=${busca}&language=pt-BR`)
+            fetch(`https://api.themoviedb.org/3/search/movie?api_key=${import.meta.env.VITE_TMDB_API_KEY}&query=${busca}&language=pt-BR`)
                 .then(res => res.json())
                 .then(data => setResultadosBusca(data.results));
             } else {
@@ -24,7 +24,7 @@ function MovieList({ busca }) {
 
     useEffect(() => {
 
-        fetch('https://api.themoviedb.org/3/movie/popular?api_key=b1bf722e448db2af2236039be0782e6a&language=pt-BR')
+        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=pt-BR`)
 
         .then(Response => Response.json())
 
@@ -32,7 +32,7 @@ function MovieList({ busca }) {
             setPopulares(data.results);
         });
 
-        fetch('https://api.themoviedb.org/3/movie/now_playing?api_key=b1bf722e448db2af2236039be0782e6a&language=pt-BR')
+        fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=pt-BR`)
 
         .then(Response => Response.json())
 
