@@ -1,22 +1,33 @@
-import profile from '../assets/profile.png'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 
 function Footer() {
     return (
-        <footer>
-            <div className="contatos">
-                <img src={profile} alt="Foto de paulo moreira, homem negro de cabelos negros e olhos castanhos" />
-                <h3>Paulo Moreira</h3>
-                <p>Estudante de Análise e Desenvolvimento de Sistemas na UNIJORGE</p>
-                <address><a href="mailto:thepaulo1313@gmail.com">thepaulo1313@gmail.com</a></address>
+        <footer id="site-footer">
+            {/* Quadrados brancos das redes */}
+            <div className="social-boxes">
+                <a href="https://github.com/paaulo-13?tab=repositories" target="_blank" rel="noreferrer" className="social-box" aria-label="GitHub">
+                    <FontAwesomeIcon icon={faGithub} />
+                </a>
+                <a href="https://www.linkedin.com/in/paulosergio13/" target="_blank" rel="noreferrer" className="social-box" aria-label="LinkedIn">
+                    <FontAwesomeIcon icon={faLinkedinIn} />
+                </a>
+                <a href="mailto:thepaulo1313@gmail.com" className="social-box" aria-label="E-mail">
+                    <FontAwesomeIcon icon={faEnvelope} />
+                </a>
+                <a href="tel:+5571986277069" className="social-box" aria-label="Telefone">
+                    <FontAwesomeIcon icon={faPhone} />
+                </a>
             </div>
-            <div className="icons">
-                <ul>
-                    <li><a href="https://github.com/paaulo-13?tab=repositories" target="_blank" aria-label="GitHub de Paulo Moreira"><i className="fa-brands fa-square-github"></i></a></li>
-                    <li><a href="https://www.linkedin.com/in/paulosergio13/" target="_blank" aria-label="Linkedin de Paulo Moreira"><i className="fa-brands fa-square-linkedin"></i></a></li>
-                </ul>
+
+            {/* Nome e Ano */}
+            <div className="footer-credits">
+                <p className="footer-name">Paulo Moreira</p>
+                <p className="footer-year">© 2026</p>
             </div>
         </footer>
-    )
+    );
 }
 
-export default Footer
+export default Footer;

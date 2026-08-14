@@ -1,147 +1,77 @@
-import { use, useEffect, useState } from "react"
+import Carrossel from "./Carrossel";
+import { useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBurst, faFire, faHeart } from "@fortawesome/free-solid-svg-icons";
 
+// Recebe favoritos e favoritarFilme do App.jsx (estado centralizado)
+// Recebe onSelecionarFilme para abrir o modal ao clicar em um pôster
+function MovieList({ onSelecionarFilme, favoritos, favoritarFilme }) {
 
-
-function MovieList({ busca }) {
-
-    const [resultadosBusca, setResultadosBusca] = useState([]);
-    const [populares, setPopulares] = useState([]);
-    const [novidades, setNovidades] = useState([]);
-    const [favoritos, setFavoritos] = useState(() => {
-    const salvo = localStorage.getItem('favoritos');
-    return salvo ? JSON.parse(salvo) : [];
-    });
-
+    // Agora apenas busca os filmes da API — favoritos vivem no App.jsx
     useEffect(() => {
-        if (busca.trim() !=='') {
-            fetch(`https://api.themoviedb.org/3/search/movie?api_key=${import.meta.env.VITE_TMDB_API_KEY}&query=${busca}&language=pt-BR`)
-                .then(res => res.json())
-                .then(data => setResultadosBusca(data.results));
-            } else {
-                setResultadosBusca([]);
-            }
-        }, [busca]);
+        // O MovieList não gerencia mais favoritos, apenas os recebe via prop
+    }, [favoritos]);
 
-    useEffect(() => {
-
-        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=pt-BR`)
-
-        .then(Response => Response.json())
-
-        .then(data => {
-            setPopulares(data.results);
-        });
-
-        fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=pt-BR`)
-
-        .then(Response => Response.json())
-
-        .then(data => {
-            setNovidades(data.results)
-        });
-    }, []);
-
-    useEffect(() =>{
-        localStorage.setItem('favoritos', JSON.stringify(favoritos))
-    }, [favoritos])
-
- 
-
-function favoritarFilme(filmeClicado) {
-    const jaFavorito = favoritos.some(filme => filme.id === filmeClicado.id);
-
-    if (jaFavorito){
-        const novListaFav = favoritos.filter(filme => filme.id !== filmeClicado.id);
-        setFavoritos(novListaFav);
-    } else {
-        setFavoritos([...favoritos, filmeClicado])
-        }
-    }
-    return(
+    return (
         <main>
-        <section id="MovieList">
+            <section id="MovieList">
 
-        {resultadosBusca.length > 0 && (
-    <div className="container-list">
-        <h2>Resultados da Pesquisa</h2>
-        <div className="list-nov">
-            {resultadosBusca.map(filme => (
-                <article key={filme.id}>
-                    <h3>{filme.title}</h3>
-                    <button onClick={() => favoritarFilme(filme)}>
-                        {favoritos.some(f => f.id === filme.id) ? '❤️' : '🤍'}
-                    </button>
-                    <img 
-                        src={`https://image.tmdb.org/t/p/w500${filme.poster_path}`} 
-                        alt={filme.title} 
-                        className="poster-image" 
-                    />
-                    <span>{filme.vote_average}</span>
-                </article>
-            ))}
-        </div>
-    </div>
-)}
+                {/* Carrossel de Novidades */}
+                <Carrossel
+                    titulo="Novidades"
+                    icone={faBurst}
+                    endpoint="now_playing"
+                    favoritos={favoritos}
+                    favoritarFilme={favoritarFilme}
+                    onSelecionarFilme={onSelecionarFilme}
+                />
 
-            <div className="container-list">
-            <h2>Novidades</h2>
-                <div className="list-nov">
-                    {novidades.map(filme => (
-                        <article key={filme.id}>
-                            <h3>{filme.title}</h3>
-                            <button onClick={() => favoritarFilme(filme)}>{favoritos.some(f => f.id === filme.id) ? '❤️' : '🤍'}</button>
-                            <img 
-                            src={`https://image.tmdb.org/t/p/w500${filme.poster_path}`} 
-                            alt={filme.title}
-                            className="poster-image" 
-                            />
-                            <span>{filme.vote_average}</span>
-                        </article>
-                    ))}
-                </div>
-            </div>
+                {/* Carrossel de Populares */}
+                <Carrossel
+                    titulo="Populares"
+                    icone={faFire}
+                    endpoint="popular"
+                    favoritos={favoritos}
+                    favoritarFilme={favoritarFilme}
+                    onSelecionarFilme={onSelecionarFilme}
+                />
 
-            <div className="container-list">
-            <h2>Populares</h2>
-                <div className="list-pop">
-                   {populares.map(filme => (
-                        <article key={filme.id}>
-                            <h3>{filme.title}</h3>
-                            <button onClick={() => favoritarFilme(filme)}>{favoritos.some(f => f.id === filme.id) ? '❤️' : '🤍'}</button>
-                            <img
-                                src={`https://image.tmdb.org/t/p/w500${filme.poster_path}`}
-                                alt={filme.title}
-                                className="poster-image"
-                            />
-                            <span>{filme.vote_average}</span>
-                        </article>
-                   ))} 
-                </div>
-            </div>
+                {/* Grade 2 Colunas de Favoritos */}
+                <div className="container-list" id="favoritos">
+                    <h2 className="title-pill">
+                        <FontAwesomeIcon icon={faHeart} className="icons-sec" />
+                        <span>Favoritos</span>
+                    </h2>
 
-            <div className="container-list">
-            <h2>Favoritos</h2>
-                <div className="list-fav">
                     {favoritos.length === 0 ? (
-                    <p>Nenhum filme favoritado ainda.</p>
+                        <p className="mensagem-vazio">Nenhum filme favoritado ainda.</p>
                     ) : (
-                    favoritos.map(filme => (
-                <article key={filme.id}>
-                    <h3>{filme.title}</h3>
-                    <img 
-                    src={`https://image.tmdb.org/t/p/w500${filme.poster_path}`} 
-                    alt={filme.title} 
-                    className="poster-image"
-                    />
-                </article>
-        ))
-    )}
-</div>
-            </div>
+                        <div className="grid-favoritos">
+                            {favoritos.map((filme) => (
+                                <article key={filme.id} className="fav-card">
+                                    {/* Clicar no pôster abre o modal */}
+                                    <img
+                                        src={`https://image.tmdb.org/t/p/w500${filme.poster_path}`}
+                                        alt={filme.title}
+                                        className="fav-poster"
+                                        onClick={() => onSelecionarFilme(filme)}
+                                    />
+                                    <button
+                                        className="fav-remove-btn"
+                                        onClick={() => favoritarFilme(filme)}
+                                        aria-label="Remover dos favoritos"
+                                    >
+                                        <FontAwesomeIcon icon={faHeart} />
+                                    </button>
+                                </article>
+                            ))}
+                        </div>
+                    )}
+                </div>
 
-        </section>
+            </section>
         </main>
-    )
+    );
 }
 
-export default MovieList
+export default MovieList;

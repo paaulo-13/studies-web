@@ -1,8 +1,8 @@
 function Hero() {
     return(
         <section id="hero">
-            <h1><span>C</span>Filmes</h1>
-            <p>O seu <strong>catálogo de filmes!</strong></p>
+            <p className="eyebrow">SEU CATÁLOGO FAVORITO DE FILMES</p>
+            <h1>Descubra, pesquise e favorite filmes com a <strong>maior biblioteca de todas</strong></h1>
         </section>
     )
 }
