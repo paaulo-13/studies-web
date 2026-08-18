@@ -809,6 +809,11 @@ h2 {
 
   .movie-card {
     width: calc((100% - 4.5rem) / 4);
+    transition: transform 0.3 ease;
+  }
+
+  .movie-card:hover {
+    transform: scale(1.02);
   }
 
   .poster-image {
