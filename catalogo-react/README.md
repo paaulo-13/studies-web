@@ -1,141 +1,77 @@
-# 🎬 Catálogo de Filmes
+# 🎬 Catálogo de Filmes — React & TMDB API
 
-> Aplicação web de catálogo de filmes construída com **React 19** e integrada à **API do TMDB**, com sistema de busca em tempo real e favoritos persistidos localmente.
-
-![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![Vite](https://img.shields.io/badge/Vite-8-646CFF?style=for-the-badge&logo=vite&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![TMDB](https://img.shields.io/badge/TMDB_API-integrado-01B4E4?style=for-the-badge&logo=themoviedatabase&logoColor=white)
+> Aplicação web moderna e responsiva para catálogo e busca de filmes, desenvolvida com React, CSS3 puro com arquitetura Mobile-First e integração com a API The Movie Database (TMDB).
 
 ---
 
-## 📋 Sobre o Projeto
+## 📱 Demonstração & Layout
 
-O **Catálogo de Filmes** é uma SPA (Single Page Application) desenvolvida com React que permite ao usuário explorar, pesquisar e favoritar filmes diretamente de uma interface moderna e responsiva. Os dados são consumidos em tempo real da API oficial do [The Movie Database (TMDB)](https://www.themoviedb.org/).
+O projeto foi construído seguindo rigorosamente a metodologia **Mobile-First** e adaptado para **Desktop**, com suporte a toques nativos, animações fluidas e design inspirado nos principais serviços de streaming do mercado.
 
-O projeto foi desenvolvido como parte do meu portfólio inicial de frontend, com foco em demonstrar o uso de React com hooks, consumo de APIs REST e gerenciamento de estado local.
-
----
-
-## ✨ Funcionalidades
-
-### 🔍 Busca em Tempo Real
-- Campo de pesquisa integrado ao `Header`, com estado controlado via `useState` e passado como prop para o componente de listagem
-- A busca é feita de forma reativa: a cada caractere digitado, uma requisição é enviada à API do TMDB (`/search/movie`) e os resultados aparecem instantaneamente
-- Quando o campo está vazio, a seção de resultados desaparece automaticamente e o layout volta ao normal
-
-### 🎞️ Seção de Novidades
-- Consome o endpoint `/movie/now_playing` da API TMDB, exibindo os filmes que estão atualmente em cartaz nos cinemas
-- Exibe pôster, título e nota de avaliação de cada filme
-- Layout em grade adaptável para diferentes tamanhos de tela
-
-### 🔥 Seção de Populares
-- Consome o endpoint `/movie/popular`, trazendo os filmes mais populares do momento
-- Mesma estrutura de card, com visual diferenciado para destacar os mais populares
-
-### ❤️ Sistema de Favoritos com Persistência
-- Cada filme exibe um ícone de coração: `🤍` (não favoritado) e `❤️` (favoritado)
-- Ao clicar, o filme é adicionado ou removido da lista de favoritos com lógica de toggle
-- Os favoritos são **persistidos no `localStorage`** do navegador — eles continuam salvos mesmo após fechar o navegador ou atualizar a página
-- A seção "Favoritos" exibe todos os filmes salvos em uma grade dedicada, com a mensagem *"Nenhum filme favoritado ainda."* quando a lista estiver vazia
-
-### 🍔 Menu Hambúrguer Responsivo
-- O `Header` conta com um menu hambúrguer funcional, controlado com `useState`
-- Ao clicar, um dropdown aparece com links de navegação para as seções: Novidades, Populares e Favoritos
-
-### 🖱️ Scroll Suave
-- O clique no logo do site aciona `window.scrollTo` com `behavior: 'smooth'`, retornando o usuário ao topo da página suavemente
+- **Mobile:** Menu Drawer lateral (Sidebar), carrossel com toque nativo por *CSS Scroll Snap* e grade de favoritos compacta.
+- **Desktop:** Navbar flutuante em formato de pílula, carrossel de 4 itens por página com rolagem suave e grade de favoritos em 3 colunas.
 
 ---
 
-## 🧱 Arquitetura e Componentes
+## 🚀 Funcionalidades
 
-O projeto segue a arquitetura de componentes do React, com separação clara de responsabilidades:
-
-```
-src/
-├── App.jsx           # Componente raiz: gerencia o estado de busca e compõe a página
-├── main.jsx          # Ponto de entrada da aplicação
-├── index.css         # Estilos globais
-└── components/
-    ├── Header.jsx    # Navbar com logo, campo de busca e menu hambúrguer
-    ├── Hero.jsx      # Seção de destaque visual (banner)
-    ├── MovieList.jsx # Lógica de consumo da API e renderização de todos os catálogos
-    └── Footer.jsx    # Rodapé com informações do autor e links sociais
-```
-
-### Fluxo de Dados (Props & State)
-
-```
-App.jsx
- ├── estado: busca (string)
- ├── → Header.jsx  recebe: setBusca (função)
- └── → MovieList.jsx  recebe: busca (string)
-```
-
-- O `App` centraliza o estado `busca` e distribui via props
-- `MovieList` gerencia seus próprios estados internos: `resultadosBusca`, `populares`, `novidades` e `favoritos`
+- 🔍 **Busca em Tempo Real com Debounce:** Pesquisa integrada à API do TMDB com temporizador de 500ms para evitar requisições excessivas e desnecessárias.
+- 🎞️ **Carrosséis com CSS Scroll Snap:** Trilha de filmes com rolagem horizontal nativa de 60fps no celular e navegação inteligente por página no computador.
+- ⭐ **Cálculo Matemático de Avaliação:** Conversão automática da nota da API (escala de 0 a 10) para um sistema visual de 5 estrelas (cheias, meias e vazias).
+- ❤️ **Sistema de Favoritos com Persistência:** Adicionar ou remover filmes dos favoritos em qualquer lugar do site, persistindo os dados no `localStorage` do navegador.
+- 📄 **Modal de Detalhes Completo:** Ao clicar em qualquer pôster (no carrossel, na busca ou nos favoritos), um modal centralizado exibe o pôster em alta definição, sinopse detalhada e avaliação.
+- 🧭 **Navegação Flutuante com Scroll Suave:** Header `sticky` com salto por âncoras ajustado via `scroll-margin-top`.
 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 
-| Tecnologia | Uso |
-|---|---|
-| **React 19** | Construção de componentes e gerenciamento de estado com hooks |
-| **Vite 8** | Bundler e servidor de desenvolvimento ultra-rápido |
-| **JavaScript ES6+** | Lógica da aplicação (fetch, arrow functions, desestruturação) |
-| **TMDB API** | Fonte de dados de filmes (populares, novidades e busca) |
-| **CSS** | Estilização responsiva dos componentes |
-| **localStorage** | Persistência dos filmes favoritos no navegador |
-
-### Hooks do React Utilizados
-- `useState` — gerenciamento de estado local (busca, favoritos, listas de filmes)
-- `useEffect` — chamadas assíncronas à API e sincronização com o localStorage
+- **[React](https://react.dev/):** Hooks (`useState`, `useEffect`, `useRef`), Componentização e Elevação de Estado (*Lifting State Up*).
+- **[Vite](https://vitejs.dev/):** Build tool ultrarrápida para desenvolvimento front-end.
+- **[CSS3 Puro](https://developer.mozilla.org/pt-BR/docs/Web/CSS):** CSS Variables, Flexbox, CSS Grid, Scroll Snap, Keyframe Animations e `@media queries`.
+- **[FontAwesome](https://fontawesome.com/):** Biblioteca de ícones vetoriais.
+- **[TMDB API](https://developer.themoviedb.org/docs):** Consumo de rotas REST (`/popular`, `/now_playing`, `/search/movie`).
+- **[LocalStorage API](https://developer.mozilla.org/pt-BR/docs/Web/API/Window/localStorage):** Persistência de dados no lado do cliente.
 
 ---
 
-## 🚀 Como Executar Localmente
+## 📦 Como Rodar o Projeto Localmente
 
-**Pré-requisitos:** Node.js 18+ e npm instalados.
+### Pré-requisitos
+- [Node.js](https://nodejs.org/) instalado em sua máquina.
+- Uma chave de API gratuita do [The Movie Database (TMDB)](https://www.themoviedb.org/).
 
-```bash
-# Clone o repositório
-git clone https://github.com/paaulo-13/catalogo-react.git
+### Passo a Passo
 
-# Entre na pasta do projeto
-cd catalogo-react
+1. **Clone o repositório:**
+   ```bash
+   git clone https://github.com/paaulo-13/catalogo-react.git
+   cd catalogo-react
+   ```
 
-# Instale as dependências
-npm install
+2. **Instale as dependências:**
+   ```bash
+   npm install
+   ```
 
-# Inicie o servidor de desenvolvimento
-npm run dev
-```
+3. **Configure as Variáveis de Ambiente:**
+   Crie um arquivo `.env` na raiz do projeto com a sua chave da API do TMDB:
+   ```env
+   VITE_TMDB_API_KEY=sua_chave_aqui
+   ```
 
-Acesse `http://localhost:5173` no seu navegador.
+4. **Inicie o servidor de desenvolvimento:**
+   ```bash
+   npm run dev
+   ```
 
----
-
-## 📡 API Utilizada
-
-Este projeto consome a [API do The Movie Database (TMDB)](https://developer.themoviedb.org/).
-
-| Endpoint | Descrição |
-|---|---|
-| `/movie/popular` | Lista os filmes mais populares |
-| `/movie/now_playing` | Lista os filmes atualmente em cartaz |
-| `/search/movie?query={termo}` | Busca filmes por título |
-
-> Todas as requisições utilizam o parâmetro `language=pt-BR` para retornar os dados em português.
+5. Abra `http://localhost:5173` no seu navegador.
 
 ---
 
-## 👤 Autor
+## 👨‍💻 Autor
 
-**Paulo Moreira**
-Estudante de Análise e Desenvolvimento de Sistemas — UNIJORGE
-
-[![GitHub](https://img.shields.io/badge/GitHub-paaulo--13-181717?style=flat-square&logo=github)](https://github.com/paaulo-13?tab=repositories)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-paulosergio13-0A66C2?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/paulosergio13/)
-[![Email](https://img.shields.io/badge/Email-thepaulo1313@gmail.com-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:thepaulo1313@gmail.com)
+Desenvolvido por **Paulo Moreira**  
+- **GitHub:** [@paaulo-13](https://github.com/paaulo-13)  
+- **LinkedIn:** [Paulo Moreira](https://www.linkedin.com/in/paulosergio13/)  
+- **E-mail:** [thepaulo1313@gmail.com](mailto:thepaulo1313@gmail.com)
