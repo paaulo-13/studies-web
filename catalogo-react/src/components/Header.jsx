@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCube, faSquareXmark } from '@fortawesome/free-solid-svg-icons'
 
-// Recebe onSelecionarFilme para abrir o modal ao clicar em um resultado da busca
-// Recebe favoritos e favoritarFilme para o modal funcionar dentro da busca
 function Header({ onSelecionarFilme, favoritos, favoritarFilme }) {
     const [menuAberto, setMenuAberto] = useState(false)
     const [buscaAberta, setBuscaAberta] = useState(false)
@@ -26,7 +24,6 @@ function Header({ onSelecionarFilme, favoritos, favoritarFilme }) {
         }
     }, [textoBusca])
 
-    // Ao clicar em um resultado: abre o modal e fecha o painel de busca
     const handleResultadoClick = (filme) => {
         onSelecionarFilme(filme)
         setBuscaAberta(false)
@@ -91,7 +88,6 @@ function Header({ onSelecionarFilme, favoritos, favoritarFilme }) {
 
                 <div className='resultados-busca'>
                     {resultados.map(filme => (
-                        /* Clicar em um resultado abre o modal de detalhes */
                         <div
                             key={filme.id}
                             className='resultado-item'

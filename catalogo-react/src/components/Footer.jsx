@@ -5,7 +5,6 @@ import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 function Footer() {
     return (
         <footer id="site-footer">
-            {/* Quadrados brancos das redes */}
             <div className="social-boxes">
                 <a href="https://github.com/paaulo-13?tab=repositories" target="_blank" rel="noreferrer" className="social-box" aria-label="GitHub">
                     <FontAwesomeIcon icon={faGithub} />
@@ -21,7 +20,6 @@ function Footer() {
                 </a>
             </div>
 
-            {/* Nome e Ano */}
             <div className="footer-credits">
                 <p className="footer-name">Paulo Moreira</p>
                 <p className="footer-year">© 2026</p>

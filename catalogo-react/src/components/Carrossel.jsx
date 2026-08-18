@@ -12,18 +12,16 @@ import {
     faStar as faStarRegular
 } from "@fortawesome/free-regular-svg-icons";
 
-function Carrossel({ titulo, icone, endpoint, favoritos, favoritarFilme, onSelecionarFilme }) {
+function Carrossel({ id, titulo, icone, endpoint, favoritos, favoritarFilme, onSelecionarFilme }) {
     const carrosselRef = useRef(null);
     const [filmes, setFilmes] = useState([]);
 
-    // Cada Carrossel busca seus próprios filmes com base no endpoint recebido
     useEffect(() => {
         fetch(`https://api.themoviedb.org/3/movie/${endpoint}?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=pt-BR`)
             .then(res => res.json())
             .then(data => setFilmes(data.results || []));
     }, [endpoint]);
 
-    // Função que calcula e gera as 5 estrelas baseada na nota (0 a 10)
     const renderizarEstrelas = (nota10) => {
         const nota5 = nota10 / 2;
         const estrelas = [];
@@ -39,36 +37,34 @@ function Carrossel({ titulo, icone, endpoint, favoritos, favoritarFilme, onSelec
         return estrelas;
     };
 
-    // Rolar a esteira para a esquerda
     const rolarParaEsquerda = () => {
         if (carrosselRef.current) {
-            carrosselRef.current.scrollBy({ left: -260, behavior: "smooth" });
+            const larguraVisivel = carrosselRef.current.clientWidth;
+            carrosselRef.current.scrollBy({ left: -larguraVisivel, behavior: "smooth" });
         }
     };
 
-    // Rolar a esteira para a direita
     const rolarParaDireita = () => {
         if (carrosselRef.current) {
-            carrosselRef.current.scrollBy({ left: 260, behavior: "smooth" });
+            const larguraVisivel = carrosselRef.current.clientWidth;
+            carrosselRef.current.scrollBy({ left: larguraVisivel, behavior: "smooth" });
         }
     };
 
     if (!filmes || filmes.length === 0) return null;
 
     return (
-        <div className="container-list">
+        <div className="container-list" id={id}>
             <h2 className="title-pill">
                 <FontAwesomeIcon icon={icone} className="icons-sec" />
                 <span>{titulo}</span>
             </h2>
 
             <div className="carrossel-wrapper">
-                {/* Seta Esquerda */}
                 <button className="nav-btn btn-prev" onClick={rolarParaEsquerda} aria-label="Anterior">
                     <FontAwesomeIcon icon={faCircleChevronLeft} />
                 </button>
 
-                {/* Esteira com Rolagem Nativa (CSS Scroll Snap) */}
                 <div className="carrossel-track" ref={carrosselRef}>
                     {filmes.map((filme) => {
                         const ehFavorito = favoritos.some((f) => f.id === filme.id);
@@ -78,7 +74,6 @@ function Carrossel({ titulo, icone, endpoint, favoritos, favoritarFilme, onSelec
                                 <h3 className="movie-title">{filme.title}</h3>
 
                                 <div className="poster-wrapper">
-                                    {/* Clicar no pôster abre o modal */}
                                     <img
                                         src={`https://image.tmdb.org/t/p/w500${filme.poster_path}`}
                                         alt={filme.title}
@@ -86,7 +81,6 @@ function Carrossel({ titulo, icone, endpoint, favoritos, favoritarFilme, onSelec
                                         onClick={() => onSelecionarFilme(filme)}
                                     />
 
-                                    {/* Botão de Favoritar Flutuante */}
                                     <button
                                         className={`favorite-btn ${ehFavorito ? "active" : ""}`}
                                         onClick={() => favoritarFilme(filme)}
@@ -113,7 +107,6 @@ function Carrossel({ titulo, icone, endpoint, favoritos, favoritarFilme, onSelec
                     })}
                 </div>
 
-                {/* Seta Direita */}
                 <button className="nav-btn btn-next" onClick={rolarParaDireita} aria-label="Próximo">
                     <FontAwesomeIcon icon={faCircleChevronRight} />
                 </button>

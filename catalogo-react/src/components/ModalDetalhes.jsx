@@ -4,12 +4,10 @@ import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeartRegular, faStar as faStarRegular } from "@fortawesome/free-regular-svg-icons";
 
 function ModalDetalhes({ filme, onClose, favoritos, favoritarFilme }) {
-    // Se nenhum filme foi selecionado, o modal não desenha nada
     if (!filme) return null;
 
     const ehFavorito = favoritos.some((f) => f.id === filme.id);
 
-    // Função de estrelas (mesma lógica do carrossel)
     const renderizarEstrelas = (nota10) => {
         const nota5 = nota10 / 2;
         const estrelas = [];
@@ -27,17 +25,13 @@ function ModalDetalhes({ filme, onClose, favoritos, favoritarFilme }) {
 
     return (
         <>
-            {/* Overlay escuro de fundo - clicar nele fecha o modal */}
             <div className="modal-overlay" onClick={onClose}></div>
 
-            {/* Caixa Central do Modal */}
             <div className="modal-container">
-                {/* Botão X de Fechar no topo */}
                 <button className="modal-close-btn" onClick={onClose} aria-label="Fechar">
                     <FontAwesomeIcon icon={faXmark} />
                 </button>
 
-                {/* Pôster com Botão de Coração */}
                 <div className="modal-poster-wrapper">
                     <img
                         src={
@@ -57,17 +51,14 @@ function ModalDetalhes({ filme, onClose, favoritos, favoritarFilme }) {
                     </button>
                 </div>
 
-                {/* Título do Filme */}
                 <h2 className="modal-title">{filme.title}</h2>
 
-                {/* Sinopse da API (overview) */}
                 <p className="modal-overview">
                     {filme.overview && filme.overview.trim() !== ""
                         ? filme.overview
                         : "Sinopse não disponível para este filme."}
                 </p>
 
-                {/* Rodapé: Nota e Estrelas */}
                 <div className="modal-footer">
                     <span className="rating-number">
                         {filme.vote_average
